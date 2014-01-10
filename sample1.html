@@ -12,7 +12,7 @@
 
 <script>
 //ユーザーの現在の位置情報を取得
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {enableHighAccuracy:true; timeout:6000; maximumAge:600000;});
 
 function successCallback(position) {
 	  var gl_text = "緯度：" + position.coords.latitude + "<br>";
