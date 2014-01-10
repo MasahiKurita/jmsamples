@@ -1,7 +1,9 @@
 <script type="text/javascript">
 
+//window.alert("Google Map");
+
 //ユーザーの現在の位置情報を取得
-navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+//navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
 /***** ユーザーの現在の位置情報を取得 *****/
 function successCallback(position) {
@@ -12,7 +14,7 @@ function successCallback(position) {
     gl_text += "高度の誤差：" + position.coords.altitudeAccuracy + "<br>";
     gl_text += "方角：" + position.coords.heading + "<br>";
     gl_text += "速度：" + position.coords.speed + "<br>";
-  document.getElementById("show_result").innerHTML = gl_text;
+    document.getElementById("show_result").innerHTML = gl_text;
 
 //  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 //  var myOptions = {
@@ -21,7 +23,7 @@ function successCallback(position) {
 //    mapTypeId: google.maps.MapTypeId.ROADMAP
 //  };
 //  var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-}
+//}
 
 /***** 位置情報が取得できない場合 *****/
 function errorCallback(error) {
