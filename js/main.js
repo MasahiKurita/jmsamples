@@ -1,11 +1,15 @@
+$(document).bind("mobileinit", function() {
+     $.mobile.page.prototype.options.addBackBtn = true;
+});
+
 $(document).bind("pageinit", function() {
 
-	$("div#main").on("pageshow", function() {
+	$("div#main").bind("pageshow", function() {
     	//ここに処理を記述
     	//alert("Content List");
 	});
 
-	$("div#sample1").on("pageshow", function() {
+	$("div#sample1").bind("pageshow", function() {
     	// XXX DEBUG
     	//alert("Sample1");
     	//ユーザーの現在の位置情報を取得
