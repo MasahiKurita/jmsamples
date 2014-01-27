@@ -66,7 +66,7 @@ $(document).bind("pageinit", function() {
         var mapOptions = {
             zoom: 3,
             center: myLatLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.TERRAIN
         };
 
         /* 地図インスタンス生成 */
