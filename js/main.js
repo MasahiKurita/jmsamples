@@ -62,7 +62,7 @@ $(document).bind("pageinit", function() {
 
     $("div#sample2").bind("pageshow", function() {
         // XXX DEBUG
-        //alert("Sample2");
+        alert("Sample2");
         var myLatLng = new google.maps.LatLng(0, -180);
         var mapOptions = {
             zoom: 3,
