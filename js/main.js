@@ -62,7 +62,6 @@ $(document).bind("pageinit", function() {
 
     $("div#sample2").bind("pageshow", function() {
         // XXX DEBUG
-        alert("Sample2");
         var myLatLng = new google.maps.LatLng(0, -180);
         var mapOptions = {
             zoom: 3,
@@ -72,21 +71,19 @@ $(document).bind("pageinit", function() {
 
         /* 地図インスタンス生成 */
         var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
-        document.getElementById('foot_mark').innerHTML= 'TEST';
-        alert("sample2 end");
         /* 地理座標 */
-//        var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
-//        var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
-//        var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
+        var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
+        var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
+        var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
 
-//        var latlngs=[
-//            latlng_1,
-//            latlng_2,
-//            latlng_3
-//        ];
-//        var polyline = new goolge.maps.Polyline(latlngs,  "#008800",  3, 0.5);
+        var latlngs = [
+            latlng_1,
+            latlng_2,
+            latlng_3
+        ];
+        var polyline = new goolge.maps.Polyline(latlngs,  "#008800",  3, 0.5);
         //map.addOverlay(polyline);
-//        polyline.setMap(map);
+        polyline.setMap(map);
 
         /* コントロール追加 */
 //        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
