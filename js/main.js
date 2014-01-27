@@ -81,7 +81,13 @@ $(document).bind("pageinit", function() {
             latlng_2,
             latlng_3
         ];
-        var polyline = new goolge.maps.Polyline(latlngs,  "#008800",  3, 0.5);
+        var polyline = new goolge.maps.Polyline({
+            path: latlngs,
+            strokeColor: "#008800",
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+
+        });
 //        map.addOverlay(polyline);
         polyline.setMap(map);
 
