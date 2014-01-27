@@ -82,17 +82,18 @@ $(document).bind("pageinit", function() {
             latlng_2,
             latlng_3
         ];
-        var polyline = new GPolyline(latlngs,  "#008800",  3, 0.5);
-        map.addOverlay(polyline);
+        var polyline = new goolge.maps.Polyline(latlngs,  "#008800",  3, 0.5);
+        //map.addOverlay(polyline);
+        polyline.setMap(map);
 
         /* コントロール追加 */
-        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
-        map.addControl(new google.maps.MapTypeControl()); /* 地図タイプ切替コントロール */
+//        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
+//        map.addControl(new google.maps.MapTypeControl()); /* 地図タイプ切替コントロール */
 
         /* マーカー追加 */
-        map.addOverlay(new google.maps.Marker(latlng_1));
-        map.addOverlay(new google.maps.Marker(latlng_2));
-        map.addOverlay(new google.maps.Marker(latlng_3));
+//        map.addOverlay(new google.maps.Marker(latlng_1));
+//        map.addOverlay(new google.maps.Marker(latlng_2));
+//        map.addOverlay(new google.maps.Marker(latlng_3));
 
     });
 });
