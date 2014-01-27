@@ -72,6 +72,7 @@ $(document).bind("pageinit", function() {
 
         /* 地図インスタンス生成 */
         var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
+        document.getElementById('foot_mark').innerHTML= 'TEST';
         alert("sample2 end");
         /* 地理座標 */
 //        var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
