@@ -67,11 +67,11 @@ $(document).bind("pageinit", function() {
         var mapOptions = {
             zoom: 3,
             center: myLatLng,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         /* 地図インスタンス生成 */
-        var map = new google.maps.Map(document.getElementById("foot_mark"), mapOptions);
+        var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
         /* 地理座標 */
 //        var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
 //        var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
