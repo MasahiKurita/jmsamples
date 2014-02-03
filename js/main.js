@@ -78,6 +78,8 @@ $(document).bind("pageinit", function() {
             var latlng_2 = new google.maps.LatLng(7.367359,134.538795); /* Koror */
             var latlng_3 = new google.maps.LatLng(10.310018,123.979627); /* Cebu */
 
+            var bounds = new google.maps.LatLngBounds();
+
             var latlngs = [
                 latlng_1,
                 latlng_2,
@@ -88,17 +90,23 @@ $(document).bind("pageinit", function() {
                 map: map,
                 title:"Narita"
             });
+            bounds.extend(latlng_1);
 
             var marker2 = new google.maps.Marker({
                 position: latlng_2,
                 map: map,
                 title:"Koror"
             });
+            bounds.extend(latlng_2);
+
             var marker3 = new google.maps.Marker({
                 position: latlng_3,
                 map: map,
                 title:"Cebu"
             });
+            bounds.extend(latlng_3);
+
+            map.fitBounds(bounds);
 
             var footmark = new google.maps.Polyline({
                 path: latlngs,
