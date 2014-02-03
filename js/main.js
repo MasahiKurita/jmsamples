@@ -77,7 +77,7 @@ $(document).bind("pageinit", function() {
         var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
 
         var latlngs = [
-            latlng_1,
+//            latlng_1,
             latlng_2,
             latlng_3
         ];
