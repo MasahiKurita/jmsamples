@@ -66,7 +66,7 @@ $(document).bind("pageinit", function() {
         var mapOptions = {
             zoom: 3,
             center: myLatLng,
-            mapTypeId: google.maps.MapTypeId.TERRAIN
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         /* 地図インスタンス生成 */
@@ -81,15 +81,31 @@ $(document).bind("pageinit", function() {
             latlng_2,
             latlng_3
         ];
-        var polyline = new goolge.maps.Polyline({
-            path: latlngs,
-            strokeColor: "#008800",
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-
+        var marker1 = new google.maps.Marker({
+            position: latlng_1,
+            map: map,
+            title:"Narita"
         });
+
+        var marker2 = new google.maps.Marker({
+            position: latlng_2,
+            map: map,
+            title:"Koror"
+        });
+        var marker3 = new google.maps.Marker({
+            position: latlng_3,
+            map: map,
+            title:"Cebu"
+        });
+
+//        var polyline = new goolge.maps.Polyline({
+//            path: latlngs,
+//            strokeColor: "#008800",
+//            strokeOpacity: 1.0,
+//            strokeWeight: 2
+//        });
 //        map.addOverlay(polyline);
-        polyline.setMap(map);
+//        polyline.setMap(map);
 
         /* コントロール追加 */
 //        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
