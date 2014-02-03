@@ -98,14 +98,14 @@ $(document).bind("pageinit", function() {
             title:"Cebu"
         });
 
-//        var polyline = new goolge.maps.Polyline({
-//            path: latlngs,
-//            strokeColor: "#008800",
-//            strokeOpacity: 1.0,
-//            strokeWeight: 2
-//        });
+        var polyline = new goolge.maps.Polyline({
+            path: latlngs,
+            strokeColor: "#008800",
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
 //        map.addOverlay(polyline);
-//        polyline.setMap(map);
+        polyline.setMap(map);
 
         /* コントロール追加 */
 //        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
