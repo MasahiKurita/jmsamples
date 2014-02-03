@@ -98,6 +98,7 @@ $(document).bind("pageinit", function() {
             title:"Cebu"
         });
 
+        try {
         var footmark = new goolge.maps.Polyline({
             path: latlngs,
             strokeColor: "#FF0000",
@@ -106,6 +107,10 @@ $(document).bind("pageinit", function() {
         });
 //        map.addOverlay(polyline);
         footmark.setMap(map);
+
+        } catch(e) {
+        	alert(e);
+        }
 
         /* コントロール追加 */
 //        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
