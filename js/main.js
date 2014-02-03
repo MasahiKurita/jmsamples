@@ -113,6 +113,8 @@ $(document).bind("pageinit", function() {
         	alert(e);
         }
 
+        console.log("success!");
+
         /* コントロール追加 */
 //        map.addControl(new google.maps.LargeMapControl()); /* 大きなコントロール */
 //        map.addControl(new google.maps.MapTypeControl()); /* 地図タイプ切替コントロール */
