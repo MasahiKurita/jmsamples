@@ -75,8 +75,8 @@ $(document).bind("pageinit", function() {
             var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
             /* 地理座標 */
             var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
-            var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
-            var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
+            var latlng_2 = new google.maps.LatLng(7.367359,134.538795); /* Koror */
+            var latlng_3 = new google.maps.LatLng(10.310018,123.979627); /* Cebu */
 
             var latlngs = [
                 latlng_1,
