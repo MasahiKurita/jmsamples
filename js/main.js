@@ -61,52 +61,53 @@ $(document).bind("pageinit", function() {
     });
 
     $("div#sample2").bind("pageshow", function() {
-        // XXX DEBUG
-        var myLatLng = new google.maps.LatLng(0, -180);
-        var mapOptions = {
-            zoom: 3,
-            center: myLatLng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        /* 地図インスタンス生成 */
-        var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
-        /* 地理座標 */
-        var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
-        var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
-        var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
-
-        var latlngs = [
-//            latlng_1,
-            latlng_2,
-            latlng_3
-        ];
-        var marker1 = new google.maps.Marker({
-            position: latlng_1,
-            map: map,
-            title:"Narita"
-        });
-
-        var marker2 = new google.maps.Marker({
-            position: latlng_2,
-            map: map,
-            title:"Koror"
-        });
-        var marker3 = new google.maps.Marker({
-            position: latlng_3,
-            map: map,
-            title:"Cebu"
-        });
-
         try {
-        var footmark = new goolge.maps.Polyline({
-            path: latlngs,
-            strokeColor: "#FF0000",
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        });
+
+            // XXX DEBUG
+            var myLatLng = new google.maps.LatLng(0, -180);
+            var mapOptions = {
+                zoom: 3,
+                center: myLatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            /* 地図インスタンス生成 */
+            var map = new google.maps.Map(document.getElementById('foot_mark'), mapOptions);
+            /* 地理座標 */
+            var latlng_1 = new google.maps.LatLng(35.763982,140.384642); /* Narita */
+            var latlng_2 = new google.maps.LatLng(10.310018,123.979627); /* Koror */
+            var latlng_3 = new google.maps.LatLng(7.367359,134.538795); /* Cebu */
+
+            var latlngs = [
+                latlng_1,
+                latlng_2,
+                latlng_3
+            ];
+            var marker1 = new google.maps.Marker({
+                position: latlng_1,
+                map: map,
+                title:"Narita"
+            });
+
+            var marker2 = new google.maps.Marker({
+                position: latlng_2,
+                map: map,
+                title:"Koror"
+            });
+            var marker3 = new google.maps.Marker({
+                position: latlng_3,
+                map: map,
+                title:"Cebu"
+            });
+
+            var footmark = new google.maps.Polyline({
+                path: latlngs,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
 //        map.addOverlay(polyline);
-        footmark.setMap(map);
+            footmark.setMap(map);
 
         } catch(e) {
         	alert(e);
