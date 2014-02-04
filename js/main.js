@@ -149,6 +149,7 @@ $(document).bind("pageinit", function() {
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
                 console.log("already");
+                console.log("userID: " + response.authResponse.userID);
                 FB.api('/627821517270801/permissions', function(response2) {
                     for (var key in response2.data) {
                         console.log("permission: " + key);
