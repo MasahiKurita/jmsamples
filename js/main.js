@@ -143,28 +143,22 @@ $(document).bind("pageinit", function() {
               xfbml      : true  // parse XFBML
             });
 
-            var checkpermissions = function (response) {
-                console.log(response);
-            };
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
                 console.log("already");
                 console.log("userID: " + response.authResponse.userID);
                 FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                     console.log(response2);
-                    for (var key in response2.data) {
-                        console.log("permission: " + key);
-                    }
                 });
                 testAPI();
                 console.log("already");
               } else if (response.status === 'not_authorized') {
                 console.log("login1");
-                FB.login(checkpermissions, {scope: 'user_status'});
+                FB.login();
                 console.log("login1");
               } else {
                 console.log("login1");
-                FB.login(checkpermissions, {scope: 'user_status'});
+                FB.login();
                 console.log("login1");
               }
             });
@@ -189,10 +183,10 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
               FB.api('/me/checkins', function(response) {
-                  console.log("success to get " + response.data.length + " check-ins." );
-                for(i=0; i<response.data.length; i++){
-                    console.log('you checked in, ' + response.data[i].place.name + '.');
-                }
+                  console.log(response);
+                  for(i=0; i<response.data.length; i++){
+                      console.log('you checked in, ' + response.data[i].place.name + '.');
+                  }
               });
               } catch (e) {
                   console.log(e);
