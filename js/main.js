@@ -151,7 +151,9 @@ $(document).bind("pageinit", function() {
             };
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
+                console.log("already");
                 testAPI();
+                console.log("already");
               } else if (response.status === 'not_authorized') {
                 console.log("login1");
                 FB.login(checkpermissions, {scope: 'user_checkins'});
