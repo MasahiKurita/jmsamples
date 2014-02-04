@@ -146,9 +146,9 @@ $(document).bind("pageinit", function() {
               if (response.status === 'connected') {
                 testAPI();
               } else if (response.status === 'not_authorized') {
-                FB.login(, {scope: 'user_checkins'});
+                FB.login(function(response){}, {scope: 'user_status'});
               } else {
-                FB.login(, {scope: 'user_checkins'});
+                FB.login(function(response){}, {scope: 'user_status'});
               }
             });
             } catch(e) {
