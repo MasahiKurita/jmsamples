@@ -151,7 +151,7 @@ $(document).bind("pageinit", function() {
                 console.log("already");
                 FB.api('/me/permissions', function(response2) {
                     for (var key in response2.data) {
-                        console.log("permission: " + response2.data[key]);
+                        console.log("permission: " + key);
                     }
                 });
                 testAPI();
