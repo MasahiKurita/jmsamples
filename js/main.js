@@ -153,9 +153,13 @@ $(document).bind("pageinit", function() {
               if (response.status === 'connected') {
                 testAPI();
               } else if (response.status === 'not_authorized') {
+                console.log("login1");
                 FB.login(checkpermissions, {scope: 'user_checkins'});
+                console.log("login1");
               } else {
+                console.log("login1");
                 FB.login(checkpermissions, {scope: 'user_checkins'});
+                console.log("login1");
               }
             });
             } catch(e) {
