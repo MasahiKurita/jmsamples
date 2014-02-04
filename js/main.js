@@ -143,7 +143,8 @@ $(document).bind("pageinit", function() {
               xfbml      : true  // parse XFBML
             });
 
-            var checkpermissoins = function (response) {
+            var checkpermissions = function (response) {
+                console.log("check permissions.");
                 for (var key in response.data) {
                     console.log("permission: " + response.data[key]);
                 }
@@ -152,9 +153,9 @@ $(document).bind("pageinit", function() {
               if (response.status === 'connected') {
                 testAPI();
               } else if (response.status === 'not_authorized') {
-                FB.login(checkpermissoins, {scope: 'user_checkins'});
+                FB.login(checkpermissions, {scope: 'user_checkins'});
               } else {
-                FB.login(checkpermissoins, {scope: 'user_checkins'});
+                FB.login(checkpermissions, {scope: 'user_checkins'});
               }
             });
             } catch(e) {
