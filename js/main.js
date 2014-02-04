@@ -145,13 +145,15 @@ $(document).bind("pageinit", function() {
 
             var checkpermissions = function (response) {
                 console.log("check permissions.");
-                for (var key in response.data) {
-                    console.log("permission: " + response.data[key]);
-                }
             };
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
                 console.log("already");
+                FB.api('/me/permissions', function(response2) {
+                    for (var key in response2.data) {
+                        console.log("permission: " + response2.data[key]);
+                    }
+                });
                 testAPI();
                 console.log("already");
               } else if (response.status === 'not_authorized') {
