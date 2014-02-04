@@ -151,6 +151,7 @@ $(document).bind("pageinit", function() {
                 console.log("already");
                 console.log("userID: " + response.authResponse.userID);
                 FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
+                    console.log(response2);
                     for (var key in response2.data) {
                         console.log("permission: " + key);
                     }
