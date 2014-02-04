@@ -181,7 +181,7 @@ $(document).bind("pageinit", function() {
               }
           };
 
-          $("button#fblogout").click(FB.logout());
+//          $("button#fblogout").click(FB.logout());
 
     });
 
