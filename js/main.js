@@ -170,8 +170,11 @@ $(document).bind("pageinit", function() {
 
           function testAPI() {
               console.log('Welcome!  Fetching your information.... ');
-              FB.api('/me', function(response) {
-                console.log('Good to see you, ' + response.name + '.');
+              FB.api('/me/checkins', function(response) {
+                for(i=0; i<response.data.length; i++){
+                    alert(response.data[i].place.name);
+                    console.log('you checked in, ' + response.data[i].place.name + '.');
+                }
               });
           };
 
