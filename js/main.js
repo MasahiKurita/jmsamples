@@ -172,6 +172,7 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
               FB.api('/me/checkins', function(response) {
+                  console.log("success to get checkins");
                 for(i=0; i<response.data.length; i++){
                     console.log('you checked in, ' + response.data[i].place.name + '.');
                 }
