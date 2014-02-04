@@ -142,13 +142,19 @@ $(document).bind("pageinit", function() {
               cookie     : true, // enable cookies to allow the server to access the session
               xfbml      : true  // parse XFBML
             });
+
+            var checkpermissoins = function (response) {
+                for (var key in response.data) {
+                    console.log("permission: " + response.data[key]);
+                }
+            };
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
                 testAPI();
               } else if (response.status === 'not_authorized') {
-                FB.login(function(response){}, {scope: 'user_status'});
+                FB.login(checkpermissoins, {scope: 'user_checkins'});
               } else {
-                FB.login(function(response){}, {scope: 'user_status'});
+                FB.login(checkpermissoins, {scope: 'user_checkins'});
               }
             });
             } catch(e) {
@@ -172,7 +178,7 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
               FB.api('/me/checkins', function(response) {
-                  console.log("success to get " + response.data.length + "check-ins." );
+                  console.log("success to get " + response.data.length + " check-ins." );
                 for(i=0; i<response.data.length; i++){
                     console.log('you checked in, ' + response.data[i].place.name + '.');
                 }
