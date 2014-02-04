@@ -144,7 +144,7 @@ $(document).bind("pageinit", function() {
             });
 
             var checkpermissions = function (response) {
-                console.log("check permissions.");
+                console.log(response);
             };
             FB.Event.subscribe('auth.authResponseChange', function(response) {
               if (response.status === 'connected') {
@@ -160,11 +160,11 @@ $(document).bind("pageinit", function() {
                 console.log("already");
               } else if (response.status === 'not_authorized') {
                 console.log("login1");
-                FB.login(checkpermissions, {scope: 'user_checkins'});
+                FB.login(checkpermissions, {scope: 'user_status'});
                 console.log("login1");
               } else {
                 console.log("login1");
-                FB.login(checkpermissions, {scope: 'user_checkins'});
+                FB.login(checkpermissions, {scope: 'user_status'});
                 console.log("login1");
               }
             });
@@ -199,7 +199,9 @@ $(document).bind("pageinit", function() {
               }
           };
 
-//          $("button#fblogout").click(FB.logout());
+          $("button#fblogout").on({
+              click: FB.logout()
+          });
 
     });
 
