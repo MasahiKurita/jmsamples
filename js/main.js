@@ -152,9 +152,13 @@ $(document).bind("pageinit", function() {
                         });
                         testAPI();
                     } else if (response.status === 'not_authorized') {
-                        FB.login();
+                        FB.login(function(response){
+                            console.log(response);
+                        }, {scope: "user_status,user_checkins"});
                     } else {
-                        FB.login();
+                        FB.login(function(response){
+                            console.log(response);
+                        }, {scope: "user_status,user_checkins"});
                     }
                 });
             } catch(e) {
