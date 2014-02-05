@@ -200,6 +200,7 @@ $(document).bind("pageinit", function() {
 
                   var latlngs = [];
                   var bounds = new google.maps.LatLngBounds();
+                  var lastpoint;
 
 
                   FB.api('/me?fields=checkins', function(response) {
@@ -214,6 +215,7 @@ $(document).bind("pageinit", function() {
                           latlngs.push(latlng);
                           bounds.extend(latlng);
                           console.log(i + " : " + latlngs[i]);
+                          lastpoint = latlng;
 
                           var marker = new google.maps.Marker({
                               position: latlng,
@@ -223,6 +225,7 @@ $(document).bind("pageinit", function() {
 
                       }
                   });
+                  console.log(lastpoint);
                   console.log(latlngs[1]);
                   console.log(latlngs);
 
