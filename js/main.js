@@ -161,6 +161,11 @@ $(document).bind("pageinit", function() {
                         }, {scope: "user_status,user_checkins"});
                     }
                 });
+
+                $("button#fblogout").on({
+                    click: FB.logout()
+                });
+
             } catch(e) {
                 console.log(e);
             }
@@ -182,20 +187,19 @@ $(document).bind("pageinit", function() {
         function testAPI() {
               console.log('Welcome!  Fetching your information.... ');
               try {
-              FB.api('/me/checkins', function(response) {
+              FB.api('/me?fields=checkins', function(response) {
                   console.log(response);
-                  for(i=0; i<response.data.length; i++){
-                      console.log('you checked in, ' + response.data[i].place.name + '.');
+                  var checkinlist = $("ul#checkin-list");
+                  for(i=0; i<response.checkins.data.length; i++){
+                      var placename = response.checkins.data[i].place.name;
+                      console.log('you checked in, ' + placename + '.');
+                      checkinlist.append("<li>" + placename + "</li>");
                   }
               });
               } catch (e) {
                   console.log(e);
               }
         };
-
-        $("button#fblogout").on({
-              click: FB.logout()
-        });
 
     });
 
