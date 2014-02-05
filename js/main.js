@@ -187,19 +187,51 @@ $(document).bind("pageinit", function() {
         function testAPI() {
               console.log('Welcome!  Fetching your information.... ');
               try {
-              FB.api('/me?fields=checkins', function(response) {
-                  console.log(response);
-                  var checkinlist = $("ul#checkin-list");
-                  for(i=0; i<response.checkins.data.length; i++){
-                      var placename = response.checkins.data[i].place.name;
-                      console.log('you checked in, ' + placename + '.');
-                      checkinlist.append("<li>" + placename + "</li>");
-                  }
-              });
+
+
+                  var mapOptions = {
+                          zoom: 3,
+                          mapTypeId: google.maps.MapTypeId.ROADMAP
+                      };
+
+                      /* 地図インスタンス生成 */
+                  var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
+
+
+                  var latlngs = new Array();
+                  var bounds = new google.maps.LatLngBounds();
+
+
+                  FB.api('/me?fields=checkins', function(response) {
+                      console.log(response);
+                      var checkinlist = $("ul#checkin-list");
+                      for(i=0; i<response.checkins.data.length; i++){
+                          var place = response.checkins.data[i].place;
+                          console.log('you checked in, ' + place.name + '.');
+                          checkinlist.append("<li>" + place.name + "</li>");
+
+                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude)
+                          latlngs.push(latlng);
+                          bounds.extend(latlng);
+                      }
+                  });
+
+                  map.fitBounds(bounds);
+
+                  var footmark = new google.maps.Polyline({
+                      path: latlngs,
+                      strokeColor: "#FF0000",
+                      strokeOpacity: 1.0,
+                      strokeWeight: 2
+                  });
+                  footmark.setMap(map);
+
+
               } catch (e) {
                   console.log(e);
               }
         };
+
 
     });
 
