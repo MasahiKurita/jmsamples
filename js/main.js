@@ -200,10 +200,13 @@ $(document).bind("pageinit", function() {
 
                   var latlngs = [];
                   var bounds = new google.maps.LatLngBounds();
+                  var checkins;
 
                   FB.api('/me?fields=checkins', function(response) {
                       console.log(response);
                       var checkinlist = $("ul#checkin-list");
+                      //var checkins = response.checkins.data;
+                      $.extend(true, checkins, response.checkins.data);
                       for(i=0; i<response.checkins.data.length; i++){
                           var place = response.checkins.data[i].place;
                           console.log('you checked in, ' + place.name + '.');
@@ -223,9 +226,8 @@ $(document).bind("pageinit", function() {
                           });
                       }
                   });
-                  console.log(latlngs[1]);
-                  for (var key in latlngs) {
-                      console.log(latlngs[key]);
+                  for (var key in checkins) {
+                      console.log(chekins[key]);
                   }
                   console.log(latlngs);
 
