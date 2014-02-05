@@ -190,7 +190,7 @@ $(document).bind("pageinit", function() {
 
 
                   var mapOptions = {
-                          zoom: 20,
+                          zoom: 0,
                           mapTypeId: google.maps.MapTypeId.ROADMAP
                       };
 
@@ -199,7 +199,7 @@ $(document).bind("pageinit", function() {
 
 
                   var latlngs = [];
-//                  var bounds = new google.maps.LatLngBounds();
+                  var bounds = new google.maps.LatLngBounds();
 
 
                   FB.api('/me?fields=checkins', function(response) {
@@ -212,7 +212,7 @@ $(document).bind("pageinit", function() {
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           latlngs.push(latlng);
-//                          bounds.extend(latlng);
+                          bounds.extend(latlng);
 
                           var marker = new google.maps.Marker({
                               position: latlng,
@@ -224,7 +224,7 @@ $(document).bind("pageinit", function() {
                   });
                   console.log(latlngs);
 
-//                  map.fitBounds(bounds);
+                  map.fitBounds(bounds);
 
                   var footmark = new google.maps.Polyline({
                       path: latlngs,
