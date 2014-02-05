@@ -222,7 +222,7 @@ $(document).bind("pageinit", function() {
 
                       }
                   });
-                  console.log(latlngs);
+//                  console.log(latlngs);
 
 //                  bounds.extend(latlngs[0]);
 //                  bounds.extend(latlngs[1]);
