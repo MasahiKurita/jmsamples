@@ -234,7 +234,8 @@ $(document).bind("pageinit", function() {
                       strokeOpacity: 1.0,
                       strokeWeight: 2
                   });
-//            footmark.setMap(map);
+                  footmark.setMap(map);
+
 //                  map.setCenter(bounds.getCenter());
 
 //                  for (i=0; i<latlngs.length-1; i++) {
