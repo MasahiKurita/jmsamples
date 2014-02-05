@@ -225,15 +225,15 @@ $(document).bind("pageinit", function() {
                   console.log(latlngs);
 
                   map.fitBounds(bounds);
+                  var points = [latlngs[0], latlngs[1]];
+                  console.log(points);
                   var footmark = new google.maps.Polyline({
-                      path: {latlngs[0], latlngs[1]},
+                      path: points,
                       strokeColor: "#FF0000",
                       strokeOpacity: 1.0,
                       strokeWeight: 2
                   });
                   footmark.setMap(map);
-
-//                  map.setCenter(bounds.getCenter());
 
 //                  for (i=0; i<latlngs.length-1; i++) {
 //                      var footmark = new google.maps.Polyline({
