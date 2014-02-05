@@ -188,35 +188,25 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
-
-                  var mapOptions = {
-                          zoom: 3,
-                          mapTypeId: google.maps.MapTypeId.ROADMAP
-                      };
-
-                      /* 地図インスタンス生成 */
-                  var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
-
-
-                  var latlngs = [];
-                  var bounds = new google.maps.LatLngBounds();
-                  var checkins;
-
                   FB.api('/me?fields=checkins', function(response) {
                       console.log(response);
+
+                      var latlngs = [];
+                      var mapOptions = {
+                              zoom: 3,
+                              mapTypeId: google.maps.MapTypeId.ROADMAP
+                          };
+                      var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
+                      var bounds = new google.maps.LatLngBounds();
+
                       var checkinlist = $("ul#checkin-list");
-                      //var checkins = response.checkins.data;
-                      $.extend(true, checkins, response.checkins.data);
                       for(i=0; i<response.checkins.data.length; i++){
                           var place = response.checkins.data[i].place;
                           console.log('you checked in, ' + place.name + '.');
                           checkinlist.append("<li>" + place.name + "(" + place.location.latitude + "," + place.location.longitude + ")</li>");
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
-//                          latlngs.push(latlng);
-//                          bounds.extend(latlng);
-//                          console.log(i + " : " + latlngs[i]);
-//                          lastpoint = latlng;
+                          bounds.extend(latlng);
                           latlngs.push(new google.maps.LatLng(place.location.latitude, place.location.longitude));
 
                           var marker = new google.maps.Marker({
@@ -225,30 +215,17 @@ $(document).bind("pageinit", function() {
                               title:place.name
                           });
                       }
-                  });
-                  for (var key in checkins) {
-                      console.log(chekins[key]);
-                  }
-                  console.log(latlngs);
 
-                  map.fitBounds(bounds);
-                  var footmark = new google.maps.Polyline({
-                      path: latlngs,
-                      strokeColor: "#FF0000",
-                      strokeOpacity: 1.0,
-                      strokeWeight: 2
-                  });
-                  footmark.setMap(map);
+                      map.fitBounds(bounds);
 
-//                  for (i=0; i<latlngs.length-1; i++) {
-//                      var footmark = new google.maps.Polyline({
-//                          path: [latlngs[i], latlngs[i+1]],
-//                          strokeColor: "#FF0000",
-//                          strokeOpacity: 1.0,
-//                          strokeWeight: 2
-//                      });
-//                      footmark.setMap(map);
-//                  }
+                      var footmark = new google.maps.Polyline({
+                          path: latlngs,
+                          strokeColor: "#FF0000",
+                          strokeOpacity: 1.0,
+                          strokeWeight: 2
+                      });
+                      footmark.setMap(map);
+                  });
 
 
               } catch (e) {
