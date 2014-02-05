@@ -211,7 +211,7 @@ $(document).bind("pageinit", function() {
                           console.log('you checked in, ' + place.name + '.');
                           checkinlist.append("<li>" + place.name + "(" + place.location.latitude + "," + place.location.longitude + ")</li>");
 
-//                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
+                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
 //                          latlngs.push(latlng);
 //                          bounds.extend(latlng);
 //                          console.log(i + " : " + latlngs[i]);
