@@ -190,7 +190,7 @@ $(document).bind("pageinit", function() {
 
 
                   var mapOptions = {
-                          zoom: 0,
+                          zoom: 3,
                           mapTypeId: google.maps.MapTypeId.ROADMAP
                       };
 
@@ -212,7 +212,7 @@ $(document).bind("pageinit", function() {
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           latlngs.push(latlng);
-                          bounds.extend(latlng);
+//                          bounds.extend(latlng);
 
                           var marker = new google.maps.Marker({
                               position: latlng,
@@ -224,18 +224,28 @@ $(document).bind("pageinit", function() {
                   });
                   console.log(latlngs);
 
-//                  map.fitBounds(bounds);
-                  map.setCenter(bounds.getCenter());
+                  bounds.extend(latlngs[0]);
+                  bounds.extend(latlngs[1]);
 
-                  for (i=0; i<latlngs.length-1; i++) {
-                      var footmark = new google.maps.Polyline({
-                          path: [latlngs[i], latlngs[i+1]],
-                          strokeColor: "#FF0000",
-                          strokeOpacity: 1.0,
-                          strokeWeight: 2
-                      });
-                      footmark.setMap(map);
-                  }
+                  map.fitBounds(bounds);
+                  var footmark = new google.maps.Polyline({
+                      path: [latlngs[0], latlngs[1]],
+                      strokeColor: "#FF0000",
+                      strokeOpacity: 1.0,
+                      strokeWeight: 2
+                  });
+//            footmark.setMap(map);
+//                  map.setCenter(bounds.getCenter());
+
+//                  for (i=0; i<latlngs.length-1; i++) {
+//                      var footmark = new google.maps.Polyline({
+//                          path: [latlngs[i], latlngs[i+1]],
+//                          strokeColor: "#FF0000",
+//                          strokeOpacity: 1.0,
+//                          strokeWeight: 2
+//                      });
+//                      footmark.setMap(map);
+//                  }
 
 
               } catch (e) {
