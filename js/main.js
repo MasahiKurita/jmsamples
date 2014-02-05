@@ -229,7 +229,7 @@ $(document).bind("pageinit", function() {
 
                   for (i=0; i<latlngs.length-1; i++) {
                       var footmark = new google.maps.Polyline({
-                          path: [latlngs[i], [latlngs[i+1]],
+                          path: [latlngs[i], latlngs[i+1]],
                           strokeColor: "#FF0000",
                           strokeOpacity: 1.0,
                           strokeWeight: 2
