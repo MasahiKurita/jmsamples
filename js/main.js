@@ -223,15 +223,12 @@ $(document).bind("pageinit", function() {
 
                       }
                   });
+                  console.log(latlngs[0]);
                   console.log(latlngs);
 
                   map.fitBounds(bounds);
-                  var points = [];
-                  points.push(latlngs(0));
-                  points.push(latlngs[1]);
-                  console.log(points);
                   var footmark = new google.maps.Polyline({
-                      path: points,
+                      path: latlngs,
                       strokeColor: "#FF0000",
                       strokeOpacity: 1.0,
                       strokeWeight: 2
