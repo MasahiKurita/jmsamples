@@ -213,10 +213,10 @@ $(document).bind("pageinit", function() {
 
 //                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
 //                          latlngs.push(latlng);
-                          bounds.extend(latlng);
+//                          bounds.extend(latlng);
+//                          console.log(i + " : " + latlngs[i]);
+//                          lastpoint = latlng;
                           latlngs.push(new google.maps.LatLng(place.location.latitude, place.location.longitude));
-                          console.log(i + " : " + latlngs[i]);
-                          lastpoint = latlng;
 
                           var marker = new google.maps.Marker({
                               position: latlng,
