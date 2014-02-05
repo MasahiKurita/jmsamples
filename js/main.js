@@ -213,7 +213,7 @@ $(document).bind("pageinit", function() {
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           latlngs.push(latlng);
                           bounds.extend(latlng);
-                          console.log(latlngs[i]);
+                          console.log(i + " : " + latlngs[i]);
 
                           var marker = new google.maps.Marker({
                               position: latlng,
