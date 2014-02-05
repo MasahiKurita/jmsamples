@@ -208,9 +208,9 @@ $(document).bind("pageinit", function() {
                       for(i=0; i<response.checkins.data.length; i++){
                           var place = response.checkins.data[i].place;
                           console.log('you checked in, ' + place.name + '.');
-                          checkinlist.append("<li>" + place.name + "</li>");
+                          checkinlist.append("<li>" + place.name + "(" + place.location.latitude + "," + place.location.longitude + ")</li>");
 
-                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude)
+                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           latlngs.push(latlng);
 //                          bounds.extend(latlng);
 
