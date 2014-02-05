@@ -223,7 +223,7 @@ $(document).bind("pageinit", function() {
 
                       }
                   });
-                  console.log(latlngs[0]);
+                  console.log(latlngs[1]);
                   console.log(latlngs);
 
                   map.fitBounds(bounds);
