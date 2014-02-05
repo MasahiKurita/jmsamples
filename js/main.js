@@ -198,7 +198,7 @@ $(document).bind("pageinit", function() {
                   var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
 
 
-                  var latlngs = new Array();
+                  var latlngs = [];
 //                  var bounds = new google.maps.LatLngBounds();
 
 
@@ -223,7 +223,7 @@ $(document).bind("pageinit", function() {
                       }
                   });
 
-//                  map.fitBounds(bounds);
+                  map.fitBounds(bounds);
 //
 //                  var footmark = new google.maps.Polyline({
 //                      path: latlngs,
