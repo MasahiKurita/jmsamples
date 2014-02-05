@@ -198,7 +198,7 @@ $(document).bind("pageinit", function() {
                   var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
 
 
-                  var latlngs = {};
+                  var latlngs = [];
                   var bounds = new google.maps.LatLngBounds();
 
 
@@ -224,17 +224,14 @@ $(document).bind("pageinit", function() {
                   });
                   console.log(latlngs);
 
-                  bounds.extend(latlngs[0]);
-                  bounds.extend(latlngs[1]);
-
                   map.fitBounds(bounds);
-//                  var footmark = new google.maps.Polyline({
-//                      path: {latlngs[0], latlngs[1]},
-//                      strokeColor: "#FF0000",
-//                      strokeOpacity: 1.0,
-//                      strokeWeight: 2
-//                  });
-//                  footmark.setMap(map);
+                  var footmark = new google.maps.Polyline({
+                      path: {latlngs[0], latlngs[1]},
+                      strokeColor: "#FF0000",
+                      strokeOpacity: 1.0,
+                      strokeWeight: 2
+                  });
+                  footmark.setMap(map);
 
 //                  map.setCenter(bounds.getCenter());
 
