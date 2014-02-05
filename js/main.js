@@ -227,7 +227,7 @@ $(document).bind("pageinit", function() {
 
                   map.fitBounds(bounds);
                   var points = [];
-                  points.push(latlngs[0]);
+                  points.push(latlngs(0));
                   points.push(latlngs[1]);
                   console.log(points);
                   var footmark = new google.maps.Polyline({
