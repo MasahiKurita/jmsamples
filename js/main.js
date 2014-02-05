@@ -201,10 +201,9 @@ $(document).bind("pageinit", function() {
                   var latlngs = [];
                   var bounds = new google.maps.LatLngBounds();
 
-                  FB.api('/me?fields=checkins', latlngs = function(response) {
+                  FB.api('/me?fields=checkins', function(response) {
                       console.log(response);
                       var checkinlist = $("ul#checkin-list");
-                      var latlngs2 = [];
                       for(i=0; i<response.checkins.data.length; i++){
                           var place = response.checkins.data[i].place;
                           console.log('you checked in, ' + place.name + '.');
@@ -215,19 +214,19 @@ $(document).bind("pageinit", function() {
 //                          bounds.extend(latlng);
 //                          console.log(i + " : " + latlngs[i]);
 //                          lastpoint = latlng;
-                          latlngs2.push(new google.maps.LatLng(place.location.latitude, place.location.longitude));
+                          latlngs.push(new google.maps.LatLng(place.location.latitude, place.location.longitude));
 
                           var marker = new google.maps.Marker({
                               position: latlng,
                               map: map,
                               title:place.name
                           });
-
-                          return latlngs2;
-
                       }
                   });
                   console.log(latlngs[1]);
+                  for (var key in latlngs) {
+                      console.log(latlngs[key]);
+                  }
                   console.log(latlngs);
 
                   map.fitBounds(bounds);
