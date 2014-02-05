@@ -198,7 +198,7 @@ $(document).bind("pageinit", function() {
                   var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
 
 
-                  var latlngs = [];
+                  var latlngs = {};
                   var bounds = new google.maps.LatLngBounds();
 
 
