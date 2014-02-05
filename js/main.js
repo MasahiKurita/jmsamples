@@ -224,15 +224,18 @@ $(document).bind("pageinit", function() {
                   });
                   console.log(latlngs);
 
-                  map.fitBounds(bounds);
+//                  map.fitBounds(bounds);
+                  map.setCenter(bounds.getCenter());
 
-                  var footmark = new google.maps.Polyline({
-                      path: latlngs,
-                      strokeColor: "#FF0000",
-                      strokeOpacity: 1.0,
-                      strokeWeight: 2
-                  });
-                  footmark.setMap(map);
+                  for (i=0; i<latlngs.length-1; i++) {
+                      var footmark = new google.maps.Polyline({
+                          path: [latlngs[i], [latlngs[i+1]],
+                          strokeColor: "#FF0000",
+                          strokeOpacity: 1.0,
+                          strokeWeight: 2
+                      });
+                      footmark.setMap(map);
+                  }
 
 
               } catch (e) {
