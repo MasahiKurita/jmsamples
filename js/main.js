@@ -201,7 +201,8 @@ $(document).bind("pageinit", function() {
 
                       var checkinlist = $("ul#checkin-list");
                       for(i=0; i<response.checkins.data.length; i++){
-                          var place = response.checkins.data[i].place;
+                          var data = response.checkins.data[i];
+                          var place = data.place;
                           console.log('you checked in, ' + place.name + '.');
                           checkinlist.append("<li>" + place.name + "(" + place.location.latitude + "," + place.location.longitude + ")</li>");
 
@@ -217,8 +218,8 @@ $(document).bind("pageinit", function() {
 
                           var link = "http://www.facebook.com/" + data[i].id;
                           var content = "<h1> Check-In: " + place.name + "</h1>"
-                                         + "<h2> Date: " + data[i].created_time + "</h2>"
-                                         + "<h2> Message: " + data[i].message + "</h2>"
+                                         + "<h2> Date: " + data.created_time + "</h2>"
+                                         + "<h2> Message: " + data.message + "</h2>"
                                          + "<a href=\"" + link + "\">" + link + "</a>";
                           var infowindow = new google.maps.InfoWindow({
                               content: content
