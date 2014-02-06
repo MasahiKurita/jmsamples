@@ -150,17 +150,14 @@ $(document).bind("pageinit", function() {
                     if (response.status === 'connected') {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
-                            console.log(response2);
                         });
                         showCheckins();
                         console.log(infowindows);
                     } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
-                            console.log(response);
                         }, {scope: "user_status,user_checkins"});
                     } else {
                         FB.login(function(response){
-                            console.log(response);
                         }, {scope: "user_status,user_checkins"});
                     }
                 });
@@ -192,7 +189,6 @@ $(document).bind("pageinit", function() {
               try {
 
                   FB.api('/me?fields=checkins', function(response) {
-                      console.log(response);
 
                       var latlngs = [];
                       var mapOptions = {
