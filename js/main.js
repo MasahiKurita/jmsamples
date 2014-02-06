@@ -150,7 +150,7 @@ $(document).bind("pageinit", function() {
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                             console.log(response2);
                         });
-                        testAPI();
+                        showCheckins();
                     } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                             console.log(response);
@@ -184,7 +184,7 @@ $(document).bind("pageinit", function() {
             }
         }(document));
 
-        function testAPI() {
+        function showCheckins() {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
@@ -213,6 +213,18 @@ $(document).bind("pageinit", function() {
                               position: latlng,
                               map: map,
                               title:place.name
+                          });
+
+                          var link = "http://www.facebook.com/" + data[i].id;
+                          var content = "<h1> Check-In: " + place.name + "</h1>"
+                                         + "<h2> Date: " + data[i].created_time + "</h2>"
+                                         + "<h2> Message: " + data[i].message + "</h2>"
+                                         + "<a href=\"" + link + "\">" + link + "</a>";
+                          var infowindow = new google.maps.InfoWindow({
+                              content: content
+                          });
+                          google.maps.event.addListener(marker, 'click', function() {
+                              infowindow.open(map,marker);
                           });
                       }
 
