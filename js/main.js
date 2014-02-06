@@ -227,10 +227,9 @@ $(document).bind("pageinit", function() {
                               content: content
                           });
                           infowindows.push(infowindow);
-                          google.maps.event.addListener(markers[i], 'click', function() {
-                              new google.maps.InfoWindow({
-                                  content: content
-                              }).open(map,markers[i]);
+                          google.maps.event.addListener(marker, 'click', function() {
+                              alert(content);
+//                              infowindow.open(map,marker);
                           });
                       }
 
