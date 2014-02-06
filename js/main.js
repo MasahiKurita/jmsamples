@@ -227,7 +227,9 @@ $(document).bind("pageinit", function() {
                           var infowindow = new google.maps.InfoWindow({
                               content: content
                           });
+                          console.log(infowindow);
                           infowindows.push(infowindow);
+                          console.log(infowindows.length);
                       }
 
                       for (i=0; i<markers.length; i++) {
