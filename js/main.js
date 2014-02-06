@@ -181,7 +181,9 @@ $(document).bind("pageinit", function() {
 
         function attachInfoWindow(map, marker, infowindow) {
             google.maps.event.addListener(marker, 'click', function() {
-                currentInfoWindow.close();
+                if (currentInfoWindow != null) {
+                    currentInfoWindow.close();
+                }
                 infowindow.open(map,marker);
                 currentInfoWindow = infowindow;
             });
