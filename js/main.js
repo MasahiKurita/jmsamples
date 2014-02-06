@@ -239,8 +239,9 @@ $(document).bind("pageinit", function() {
                           console.log(infowindows[i]);
                       }
                       for (i=0; i<markers.length; i++) {
+                          var infowindow = infowindows[i];
                           google.maps.event.addListener(markers[i], 'click', function() {
-                              infowindows[i].open(map,markers[i]);
+                              infowindows.open(map,markers[i]);
                           })
                       }
 
