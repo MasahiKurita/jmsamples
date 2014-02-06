@@ -132,10 +132,11 @@ $(document).bind("pageinit", function() {
 
     });
 
+    var infowindows = [];
+    var markers = [];
+
     $("div#sample3").bind("pageshow", function() {
 
-        var infowindows = [];
-        var markers = [];
 
         window.fbAsyncInit = function() {
             try {
