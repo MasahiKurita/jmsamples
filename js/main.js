@@ -133,7 +133,7 @@ $(document).bind("pageinit", function() {
     });
 
     var infowindows = [];
-    //var markers = [];
+    var markers = [];
 
     $("div#sample3").bind("pageshow", function() {
 
@@ -153,16 +153,7 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        var markers = showCheckins();
-                        console.log(infowindows);
-                        console.log(markers);
-                        for (i=0; i<markers.length; i++) {
-                            console.log(infowindows[i]);
-                            console.log(markers[i]);
-                            google.maps.event.addListener(markers[i], 'click', function() {
-                                infowindows[i].open(map,markers[i]);
-                            });
-                        }
+                        showCheckins();
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
@@ -249,6 +240,15 @@ $(document).bind("pageinit", function() {
                       footmark.setMap(map);
                   });
 
+                  console.log(infowindows);
+                  console.log(markers);
+                  for (i=0; i<markers.length; i++) {
+                      console.log(infowindows[i]);
+                      console.log(markers[i]);
+                      google.maps.event.addListener(markers[i], 'click', function() {
+                          infowindows[i].open(map,markers[i]);
+                      });
+                  }
 
               } catch (e) {
                   console.log(e);
