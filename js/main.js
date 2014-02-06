@@ -216,7 +216,7 @@ $(document).bind("pageinit", function() {
                               title:place.name
                           });
 
-                          var link = "http://www.facebook.com/" + data[i].id;
+                          var link = "http://www.facebook.com/" + data.id;
                           var content = "<h1> Check-In: " + place.name + "</h1>"
                                          + "<h2> Date: " + data.created_time + "</h2>"
                                          + "<h2> Message: " + data.message + "</h2>"
