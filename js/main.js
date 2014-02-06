@@ -145,8 +145,8 @@ $(document).bind("pageinit", function() {
                     xfbml      : true  // parse XFBML
                 });
 
-//              FB.Event.subscribe('auth.authResponseChange', function(response) {
-                FB.getLoginStatus(function(response){
+              FB.Event.subscribe('auth.statusChange', function(response) {
+//                FB.getLoginStatus(function(response){
                     if (response.status === 'connected') {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
