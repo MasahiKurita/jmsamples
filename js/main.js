@@ -147,8 +147,8 @@ $(document).bind("pageinit", function() {
 
               FB.Event.subscribe('auth.statusChange', function(response) {
                     if (response.status === 'connected') {
-                        $("foot_mark2").show();
-                        $("logout-button").show();
+                        $("div#foot_mark2").show();
+                        $("button#logout-button").show();
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
