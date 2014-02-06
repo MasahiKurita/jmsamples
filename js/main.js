@@ -227,6 +227,9 @@ $(document).bind("pageinit", function() {
                               content: content
                           });
                           infowindows.push(infowindow);
+                          google.maps.event.addListener(marker[i], 'click', function() {
+                              infowindow.open(map,marker[i]);
+                          });
                       }
 
                       map.fitBounds(bounds);
