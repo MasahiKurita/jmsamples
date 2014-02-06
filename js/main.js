@@ -132,6 +132,7 @@ $(document).bind("pageinit", function() {
 
     });
 
+    var currentInfoWindow;
     $("div#sample3").bind("pageshow", function() {
 
 
@@ -160,10 +161,6 @@ $(document).bind("pageinit", function() {
                     }
                 });
 
-                $("button#fblogout").on({
-                    click: FB.logout()
-                });
-
             } catch(e) {
                 console.log(e);
             }
@@ -184,12 +181,13 @@ $(document).bind("pageinit", function() {
 
         function attachInfoWindow(map, marker, infowindow) {
             google.maps.event.addListener(marker, 'click', function() {
+                currentInfoWindow.close();
                 infowindow.open(map,marker);
+                currentInfoWindow = infowindow;
             });
         }
 
         function showCheckins() {
-              var markers = [];
               console.log('Welcome!  Fetching your information.... ');
               try {
 
@@ -221,9 +219,9 @@ $(document).bind("pageinit", function() {
                           });
 
                           var link = "http://www.facebook.com/" + data.id;
-                          var content = "<h1> Check-In: " + place.name + "</h1>"
-                                         + "<h2> Date: " + data.created_time + "</h2>"
-                                         + "<h2> Message: " + data.message + "</h2>"
+                          var content = "Check-In: " + place.name + "<br />"
+                                      + " Date: " + data.created_time + "<br />"
+                                      + " Message: " + data.message + "<br />"
                                          + "<a href=\"" + link + "\">" + link + "</a>";
                           var infowindow = new google.maps.InfoWindow({
                               content: content
@@ -250,6 +248,9 @@ $(document).bind("pageinit", function() {
               return markers;
         };
 
+        $("button#fblogout").on({
+            click: FB.logout()
+        });
 
     });
 
