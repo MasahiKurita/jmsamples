@@ -211,12 +211,12 @@ $(document).bind("pageinit", function() {
                           bounds.extend(latlng);
                           latlngs.push(latlng);
 
-                          var marker = new google.maps.Marker({
-                              position: latlng,
-                              map: map,
-                              title:place.name
-                          });
-                          markers.push(marker);
+//                          var marker = new google.maps.Marker({
+//                              position: latlng,
+//                              map: map,
+//                              title:place.name
+//                          });
+//                          markers.push(marker);
 
                           var link = "http://www.facebook.com/" + data.id;
                           var content = "<h1> Check-In: " + place.name + "</h1>"
@@ -227,7 +227,11 @@ $(document).bind("pageinit", function() {
                               content: content
                           });
                           infowindows.push(infowindow);
-                          google.maps.event.addListener(marker, 'click', function() {
+                          google.maps.event.addListener(new google.maps.Marker({
+                              position: latlng,
+                              map: map,
+                              title:place.name
+                          }), 'click', function() {
                               alert(content);
 //                              infowindow.open(map,marker);
                           });
