@@ -232,6 +232,9 @@ $(document).bind("pageinit", function() {
                           console.log(infowindows.length);
                       }
 
+                      console.log("infowindows: " + infowindows.length);
+                      console.log(infowindows);
+
                       for (i=0; i<markers.length; i++) {
                           google.maps.event.addListener(markers[i], 'click', function() {
                               infowindows[i].open(map,markers[i]);
