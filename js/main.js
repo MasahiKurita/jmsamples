@@ -157,6 +157,8 @@ $(document).bind("pageinit", function() {
                         console.log(infowindows);
                         console.log(markers);
                         for (i=0; i<markers.length; i++) {
+                            console.log(infowindows[i]);
+                            console.log(markers[i]);
                             google.maps.event.addListener(markers[i], 'click', function() {
                                 infowindows[i].open(map,markers[i]);
                             });
