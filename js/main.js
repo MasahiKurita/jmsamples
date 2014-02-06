@@ -132,6 +132,8 @@ $(document).bind("pageinit", function() {
 
     });
 
+    var infowindows = [];
+
     $("div#sample3").bind("pageshow", function() {
 
         window.fbAsyncInit = function() {
@@ -151,6 +153,7 @@ $(document).bind("pageinit", function() {
                             console.log(response2);
                         });
                         showCheckins();
+                        console.log(infowindows);
                     } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                             console.log(response);
@@ -201,7 +204,6 @@ $(document).bind("pageinit", function() {
 
                       var checkinlist = $("ul#checkin-list");
                       var markers = [];
-                      var infowindows = [];
                       for(i=0; i<response.checkins.data.length; i++){
                           var data = response.checkins.data[i];
                           var place = data.place;
@@ -227,22 +229,10 @@ $(document).bind("pageinit", function() {
                           var infowindow = new google.maps.InfoWindow({
                               content: content
                           });
-                          console.log(infowindow);
                           infowindows.push(infowindow);
-                          console.log(infowindows.length);
-                      }
-
-                      console.log("infowindows: " + infowindows.length);
-                      console.log(infowindows);
-
-                      for (i=0; i<infowindows.length; i++) {
-                          console.log(infowindows[i]);
-                      }
-                      for (i=0; i<markers.length; i++) {
-                          var infowindow = infowindows[i];
-                          google.maps.event.addListener(markers[i], 'click', function() {
-                              infowindows.open(map,markers[i]);
-                          })
+//                          google.maps.event.addListener(markers[i], 'click', function(infowindow) {
+//                              infowindows[].open(map,markers[i]);
+//                          })
                       }
 
                       map.fitBounds(bounds);
