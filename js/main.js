@@ -232,7 +232,7 @@ $(document).bind("pageinit", function() {
 
                       for (i=0; i<markers.length; i++) {
                           google.maps.event.addListener(markers[i], 'click', function() {
-                              infowindow[i].open(maps,marker[i]);
+                              infowindow[i].open(map,marker[i]);
                           })
                       }
 
