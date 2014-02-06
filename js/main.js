@@ -133,7 +133,7 @@ $(document).bind("pageinit", function() {
     });
 
     var infowindows = [];
-    var markers = [];
+    //var markers = [];
 
     $("div#sample3").bind("pageshow", function() {
 
@@ -153,7 +153,7 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        showCheckins();
+                        var markers = showCheckins();
                         console.log(infowindows);
                         console.log(markers);
                         for (i=0; i<markers.length; i++) {
@@ -195,6 +195,7 @@ $(document).bind("pageinit", function() {
         }(document));
 
         function showCheckins() {
+              var markers = [];
               console.log('Welcome!  Fetching your information.... ');
               try {
 
@@ -252,6 +253,8 @@ $(document).bind("pageinit", function() {
               } catch (e) {
                   console.log(e);
               }
+
+              return markers;
         };
 
 
