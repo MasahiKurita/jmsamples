@@ -228,7 +228,9 @@ $(document).bind("pageinit", function() {
                           });
                           infowindows.push(infowindow);
                           google.maps.event.addListener(markers[i], 'click', function() {
-                              infowindows[i].open(map,markers[i]);
+                              new google.maps.InfoWindow({
+                                  content: content
+                              }).open(map,markers[i]);
                           });
                       }
 
