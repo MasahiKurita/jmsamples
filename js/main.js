@@ -132,9 +132,6 @@ $(document).bind("pageinit", function() {
 
     });
 
-    var infowindows = [];
-    var markers = [];
-
     $("div#sample3").bind("pageshow", function() {
 
 
@@ -185,6 +182,12 @@ $(document).bind("pageinit", function() {
             }
         }(document));
 
+        function attachInfoWindow(map, marker, infowindow) {
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker);
+            });
+        }
+
         function showCheckins() {
               var markers = [];
               console.log('Welcome!  Fetching your information.... ');
@@ -211,12 +214,11 @@ $(document).bind("pageinit", function() {
                           bounds.extend(latlng);
                           latlngs.push(latlng);
 
-//                          var marker = new google.maps.Marker({
-//                              position: latlng,
-//                              map: map,
-//                              title:place.name
-//                          });
-//                          markers.push(marker);
+                          var marker = new google.maps.Marker({
+                              position: latlng,
+                              map: map,
+                              title:place.name
+                          });
 
                           var link = "http://www.facebook.com/" + data.id;
                           var content = "<h1> Check-In: " + place.name + "</h1>"
@@ -226,15 +228,8 @@ $(document).bind("pageinit", function() {
                           var infowindow = new google.maps.InfoWindow({
                               content: content
                           });
-                          infowindows.push(infowindow);
-                          google.maps.event.addListener(new google.maps.Marker({
-                              position: latlng,
-                              map: map,
-                              title:place.name
-                          }), 'click', function() {
-                              alert(content);
-//                              infowindow.open(map,marker);
-                          });
+
+                          attachInfoWindow(map, marker, infowindow);
                       }
 
                       map.fitBounds(bounds);
@@ -247,16 +242,6 @@ $(document).bind("pageinit", function() {
                       });
                       footmark.setMap(map);
                   });
-
-                  console.log(infowindows);
-                  console.log(markers);
-                  for (i=0; i<markers.length; i++) {
-                      console.log(infowindows[i]);
-                      console.log(markers[i]);
-                      google.maps.event.addListener(markers[i], 'click', function() {
-                          infowindows[i].open(map,markers[i]);
-                      });
-                  }
 
               } catch (e) {
                   console.log(e);
