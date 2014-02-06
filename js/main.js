@@ -250,10 +250,6 @@ $(document).bind("pageinit", function() {
               return markers;
         };
 
-        $("button#fblogout").on({
-            click: FB.logout()
-        });
-
     });
 
 });
