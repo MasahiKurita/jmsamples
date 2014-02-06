@@ -207,7 +207,7 @@ $(document).bind("pageinit", function() {
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           bounds.extend(latlng);
-                          latlngs.push(new google.maps.LatLng(place.location.latitude, place.location.longitude));
+                          latlngs.push(latlng);
 
                           var marker = new google.maps.Marker({
                               position: latlng,
