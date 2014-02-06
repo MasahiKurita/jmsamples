@@ -132,9 +132,10 @@ $(document).bind("pageinit", function() {
 
     });
 
-    var infowindows = [];
-
     $("div#sample3").bind("pageshow", function() {
+
+        var infowindows = [];
+        var markers = [];
 
         window.fbAsyncInit = function() {
             try {
@@ -153,7 +154,12 @@ $(document).bind("pageinit", function() {
                         });
                         showCheckins();
                         console.log(infowindows);
-                    } else if (response.status === 'not_authorized') {
+                        for (i=0; i<markers.length; i++) {
+                            google.maps.event.addListener(markers[i], 'click', function(infowindow) {
+                                infowindows[i].open(map,markers[i]);
+                            })
+                        }
+                   } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
                     } else {
@@ -199,7 +205,6 @@ $(document).bind("pageinit", function() {
                       var bounds = new google.maps.LatLngBounds();
 
                       var checkinlist = $("ul#checkin-list");
-                      var markers = [];
                       for(i=0; i<response.checkins.data.length; i++){
                           var data = response.checkins.data[i];
                           var place = data.place;
@@ -226,9 +231,6 @@ $(document).bind("pageinit", function() {
                               content: content
                           });
                           infowindows.push(infowindow);
-//                          google.maps.event.addListener(markers[i], 'click', function(infowindow) {
-//                              infowindows[].open(map,markers[i]);
-//                          })
                       }
 
                       map.fitBounds(bounds);
