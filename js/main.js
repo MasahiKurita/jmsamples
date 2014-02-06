@@ -157,7 +157,7 @@ $(document).bind("pageinit", function() {
                         for (i=0; i<markers.length; i++) {
                             google.maps.event.addListener(markers[i], 'click', function(infowindow) {
                                 infowindows[i].open(map,markers[i]);
-                            })
+                            });
                         }
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
