@@ -200,6 +200,8 @@ $(document).bind("pageinit", function() {
                       var bounds = new google.maps.LatLngBounds();
 
                       var checkinlist = $("ul#checkin-list");
+                      var markers = [];
+                      var infowindows = [];
                       for(i=0; i<response.checkins.data.length; i++){
                           var data = response.checkins.data[i];
                           var place = data.place;
@@ -215,6 +217,7 @@ $(document).bind("pageinit", function() {
                               map: map,
                               title:place.name
                           });
+                          markers.push(marker);
 
                           var link = "http://www.facebook.com/" + data.id;
                           var content = "<h1> Check-In: " + place.name + "</h1>"
@@ -224,9 +227,13 @@ $(document).bind("pageinit", function() {
                           var infowindow = new google.maps.InfoWindow({
                               content: content
                           });
-                          google.maps.event.addListener(marker, 'click', function() {
-                              infowindow.open(map,marker);
-                          });
+                          infowindows.push(infowindow);
+                      }
+
+                      for (i=0; i<markers.length; i++) {
+                          google.maps.event.addListener(markers[i], 'click', function() {
+                              infowindow[i].open(maps,marker[i]);
+                          })
                       }
 
                       map.fitBounds(bounds);
