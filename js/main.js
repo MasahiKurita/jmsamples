@@ -249,7 +249,7 @@ $(document).bind("pageinit", function() {
               }
         };
 
-        $("button#logout-button").live("click", function(){
+        $("button#logout-button").bind("click", function(){
             FB.logout(function(){
                 $.mobile.changePage("/");
             });
