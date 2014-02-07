@@ -251,6 +251,12 @@ $(document).bind("pageinit", function() {
               return markers;
         };
 
+        $("button#logout-button").live("click", function(){
+            FB.logout(function(){
+                $.mobile.changePage("/");
+            });
+        });
+
     });
 
 });
