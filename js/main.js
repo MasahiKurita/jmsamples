@@ -247,8 +247,6 @@ $(document).bind("pageinit", function() {
               } catch (e) {
                   console.log(e);
               }
-
-              return markers;
         };
 
         $("button#logout-button").live("click", function(){
