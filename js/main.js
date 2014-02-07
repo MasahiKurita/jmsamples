@@ -251,7 +251,9 @@ $(document).bind("pageinit", function() {
 
         $("button#logout-button").bind("click", function(){
             FB.logout(function(){
-                $.mobile.changePage("/");
+                $.mobile.changePage("sample3.html", {
+                    allowSamePageTransition : true
+                });
             });
         });
 
