@@ -152,7 +152,7 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        showCheckins();
+                        showCheckins(response.authResponse.userID);
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
@@ -190,11 +190,20 @@ $(document).bind("pageinit", function() {
             });
         }
 
-        function showCheckins() {
+        function showCheckins(uid, since, until) {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
-                  FB.api('/me?fields=checkins', function(response) {
+                  url = '/' + uid + '/checkins';
+                  if (since != null && until != null) {
+                      url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
+                  } else if (since != null) {
+                      url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000);
+                  } else if (until != null) {
+                      url = url + '?until=' + Math.round((new Date(until)).getTime() / 1000);
+                  }
+                  console.log("url: " + url);
+                  FB.api('/' + uid + '/checkins', function(response) {
 
                       var latlngs = [];
                       var mapOptions = {
@@ -255,6 +264,10 @@ $(document).bind("pageinit", function() {
                     allowSamePageTransition : true
                 });
             });
+        });
+
+        $("button#filter-button").bind("click", function() {
+            $("ul#checkin-list").empty();
         });
 
     });
