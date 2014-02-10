@@ -223,7 +223,7 @@ $(document).bind("pageinit", function() {
                           var data = response.data[i];
                           var place = data.place;
                           var created_time = new Date(data.created_time);
-                          var datestr = created_time.getFullYear + "/" + (created_time.getMonth()+1) + "/" created_time.getDate();
+                          var datestr = created_time.getFullYear() + "/" + (created_time.getMonth()+1) + "/" created_time.getDate();
                           checkinlist.append("<li>" + datestr + " に、" + place.name + "にチェックインしました。")</li>");
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
@@ -238,8 +238,8 @@ $(document).bind("pageinit", function() {
 
                           var link = "http://www.facebook.com/" + data.id;
                           var content = "Check-In: " + place.name + "<br />"
-                                      + " Date: " + datestr + "<br />"
-                                      + " Message: " + data.message + "<br />"
+                                      + "Date: " + datestr + "<br />"
+                                      + "Message: " + data.message + "<br />"
                                          + "<a href=\"" + link + "\">" + link + "</a>";
                           var infowindow = new google.maps.InfoWindow({
                               content: content
