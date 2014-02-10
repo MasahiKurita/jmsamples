@@ -266,11 +266,11 @@ $(document).bind("pageinit", function() {
                       footmark.setMap(map);
 
                       if (since == "") {
-                          var defaultsince = new (response.data[0].created_time);
+                          var defaultsince = new Date(response.data[0].created_time);
                           $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
                       }
                       if (until == "") {
-                          var defaultuntil = new (response.data[response.date.length-1].created_time);
+                          var defaultuntil = new Date(response.data[response.date.length-1].created_time);
                           $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
                       }
                   });
