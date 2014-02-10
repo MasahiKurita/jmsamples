@@ -223,8 +223,8 @@ $(document).bind("pageinit", function() {
                           var data = response.data[i];
                           var place = data.place;
                           var created_time = new Date(data.created_time);
-                          var datestr = created_time.getFullYear() + "/" + (created_time.getMonth()+1) + "/" + created_time.getDate();
-                          checkinlist.append("<li>" + datestr + " に、" + place.name + "にチェックインしました。)</li>");
+                          var datestr = created_time.getFullYear() + "/" + ("0"+(created_time.getMonth()+1)).slice(-2) + "/" + created_time.getDate() + " " + created_time.getHours() + ":" + created_time.getMinuts() + ":" + created_time.getSeconds();
+                          checkinlist.append("<li>" + datestr + " に、" + place.name + "にチェックインしました。</li>");
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           bounds.extend(latlng);
