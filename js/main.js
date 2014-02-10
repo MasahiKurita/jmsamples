@@ -132,6 +132,7 @@ $(document).bind("pageinit", function() {
 
     });
 
+    var uid;
     var currentInfoWindow;
     $("div#sample3").bind("pageshow", function() {
 
@@ -152,7 +153,11 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
+                        uid = response.authResponse.userID;
+                        var since = $("input#sincedate").val();
+                        var until = $("input#untildate").val();
+                        showCheckins(uid, since, until);
+                        //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
@@ -268,6 +273,10 @@ $(document).bind("pageinit", function() {
 
         $("button#filter-button").bind("click", function() {
             $("ul#checkin-list").empty();
+            $("div#foot_mark2").empty();
+            var since = $("input#sincedate").val();
+            var until = $("input#untildate").val();
+            showCheckins(uid, since, until);
         });
 
         //$("input#sincedate").datepicker();
