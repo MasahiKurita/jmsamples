@@ -270,6 +270,8 @@ $(document).bind("pageinit", function() {
             $("ul#checkin-list").empty();
         });
 
+        $("input#sincedate").datepicker();
+
     });
 
 });
