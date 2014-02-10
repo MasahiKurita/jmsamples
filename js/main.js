@@ -133,6 +133,8 @@ $(document).bind("pageinit", function() {
     });
 
     var uid;
+    var since;
+    var until;
     var currentInfoWindow;
     $("div#sample3").bind("pageshow", function() {
 
@@ -246,6 +248,7 @@ $(document).bind("pageinit", function() {
 
                           attachInfoWindow(map, marker, infowindow);
                       }
+                      checkinlist.listview('refresh');
 
                       map.fitBounds(bounds);
 
@@ -261,6 +264,15 @@ $(document).bind("pageinit", function() {
                           }]
                       });
                       footmark.setMap(map);
+
+                      if (since == "") {
+                          var defaultsince = new (response.data[0].created_time);
+                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
+                      }
+                      if (until == "") {
+                          var defaultuntil = new (response.data[response.date.length-1].created_time);
+                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
+                      }
                   });
 
               } catch (e) {
