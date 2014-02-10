@@ -152,7 +152,7 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        showCheckins(response.authResponse.userID null, null);
+                        showCheckins(response.authResponse.userID, null, null);
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
