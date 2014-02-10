@@ -237,7 +237,7 @@ $(document).bind("pageinit", function() {
 
                           var link = "http://www.facebook.com/" + data.id;
                           var content = "Check-In: " + place.name + "<br />"
-                                      + "Date: " + created_time.toDateString() + "<br />"
+                                      + "Date: " + created_time.toDateString() + "(" + created_time.toLocaleTimeString() + ")<br />"
                                       + "Message: " + data.message + "<br />"
                                          + "<a href=\"" + link + "\">" + link + "</a>";
                           var infowindow = new google.maps.InfoWindow({
@@ -253,7 +253,12 @@ $(document).bind("pageinit", function() {
                           path: latlngs,
                           strokeColor: "#FF0000",
                           strokeOpacity: 1.0,
-                          strokeWeight: 2
+                          strokeWeight: 2,
+                          icons: [{
+                              icon: {
+                                  path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                              }
+                          }]
                       });
                       footmark.setMap(map);
                   });
