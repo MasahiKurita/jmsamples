@@ -152,7 +152,7 @@ $(document).bind("pageinit", function() {
                         console.log("userID: " + response.authResponse.userID);
                         FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
                         });
-                        showCheckins(response.authResponse.userID);
+                        showCheckins(response.authResponse.userID null, null);
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins"});
@@ -203,7 +203,7 @@ $(document).bind("pageinit", function() {
                       url = url + '?until=' + Math.round((new Date(until)).getTime() / 1000);
                   }
                   console.log("url: " + url);
-                  FB.api('/' + uid + '/checkins', function(response) {
+                  FB.api(url, function(response) {
 
                       var latlngs = [];
                       var mapOptions = {
@@ -214,8 +214,8 @@ $(document).bind("pageinit", function() {
                       var bounds = new google.maps.LatLngBounds();
 
                       var checkinlist = $("ul#checkin-list");
-                      for(i=0; i<response.checkins.data.length; i++){
-                          var data = response.checkins.data[i];
+                      for(i=0; i<response.data.length; i++){
+                          var data = response.data[i];
                           var place = data.place;
                           console.log('you checked in, ' + place.name + '.');
                           checkinlist.append("<li>" + place.name + "(" + place.location.latitude + "," + place.location.longitude + ")</li>");
