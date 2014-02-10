@@ -200,11 +200,11 @@ $(document).bind("pageinit", function() {
               try {
 
                   url = '/' + uid + '/checkins';
-                  if (since != null && until != null) {
+                  if (since != "" && until != "") {
                       url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
-                  } else if (since != null) {
+                  } else if (since != "") {
                       url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000);
-                  } else if (until != null) {
+                  } else if (until != "") {
                       url = url + '?until=' + Math.round((new Date(until)).getTime() / 1000);
                   }
                   console.log("url: " + url);
