@@ -270,7 +270,7 @@ $(document).bind("pageinit", function() {
             $("ul#checkin-list").empty();
         });
 
-        $("input#sincedate").datepicker();
+        //$("input#sincedate").datepicker();
 
     });
 
