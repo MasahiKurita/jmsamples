@@ -224,7 +224,7 @@ $(document).bind("pageinit", function() {
                           var place = data.place;
                           var created_time = new Date(data.created_time);
                           var datestr = created_time.getFullYear() + "/" + (created_time.getMonth()+1) + "/" created_time.getDate();
-                          checkinlist.append("<li>" + datestr + " に、" + place.name + "にチェックインしました。")</li>");
+                          checkinlist.append("<li>" + datestr + " に、" + place.name + "にチェックインしました。)</li>");
 
                           var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
                           bounds.extend(latlng);
