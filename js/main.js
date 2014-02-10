@@ -239,7 +239,7 @@ $(document).bind("pageinit", function() {
                           var content = "Check-In: " + place.name + "<br />"
                                       + "Date: " + created_time.toDateString() + "(" + created_time.toLocaleTimeString() + ")<br />"
                                       + "Message: " + data.message + "<br />"
-                                         + "<a href=\"" + link + "\">" + link + "</a>";
+                                      + "<a href=\"" + link + "\">" + link + "</a>";
                           var infowindow = new google.maps.InfoWindow({
                               content: content
                           });

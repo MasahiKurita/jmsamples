@@ -28,19 +28,19 @@
 <div data-role="contennt" id="checkins">
     <p>Check-Ins</p>
     <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+    <button id="logout-button" type="button">log-out</button>
 
-    <button id="filter-button" type="button">Filter</button>
+    <div id="foot_mark2"></div>
+
+    <ul id="checkin-list" data-role="listview">
+    </ul>
+
     <label for="sincedate">Since</label>
     <input id="sincedate" type="date" />
     <label for="untildate">Until</label>
     <input id="untildate" type="date" />
+    <button id="filter-button" type="button">Filter</button>
 
-    <ul id="checkin-list">
-    </ul>
-
-    <div id="foot_mark2"></div>
-
-    <button id="logout-button" type="button">log-out</button>
 </div>
 
 
