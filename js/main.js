@@ -202,7 +202,7 @@ $(document).bind("pageinit", function() {
               try {
 
 //                  var url = '/' + uid + '/checkins';
-                  var url = '/' + uid + '/feed?fields=place,story,message';
+                  var url = '/' + uid + '/feed?limit=10000&fields=place,story,message';
                   if (since != "" && until != "") {
                       url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
                   } else if (since != "") {
