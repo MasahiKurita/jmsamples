@@ -21,6 +21,13 @@
 <div id="fb-root"></div>
 
 <div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
+    <div data-role="fieldcontain" data-inline="true" class="ui-hide-label">
+        <label for="sincedate">Since:</label>
+        <input id="sincedate" type="date" />
+        <label for="untildate">Until:</label>
+        <input id="untildate" type="date" />
+        <button id="filter-button" type="button" data-mini="true">Filter</button>
+    </div>
     <h3>History</h3>
     <ul id="checkin-list" data-role="listview">
     </ul>
@@ -36,16 +43,7 @@
 <!--7.ページ内容の設定-->
 <div data-role="content" id="checkins">
     <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-    <div data-role="fieldcontain" data-inline="true" class="ui-hide-label">
-        <label for="sincedate">Since:</label>
-        <input id="sincedate" type="date" size="20" data-role="none" />
-        &nbsp;&nbsp;-&nbsp;&nbsp;
-        <label for="untildate">Until:</label>
-        <input id="untildate" type="date" size="20" data-role="none" />
-        <button id="filter-button" type="button" data-mini="true"  data-inline="true">Filter</button>
-    </div>
     <div id="foot_mark2"></div>
-
 </div>
 
 
