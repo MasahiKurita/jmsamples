@@ -153,12 +153,12 @@ $(document).bind("pageinit", function() {
                 FB.getLoginStatus(function(response) {
                     if (response.session) {
                         alert("Logged in.");
-                      } else {
+                    } else {
                         alert("Not Logged in.");
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins,read_stream"});
-                      }
-                })
+                    }
+                });
             });
 
             FB.Event.subscribe('auth.statusChange', function(response) {
@@ -295,7 +295,9 @@ $(document).bind("pageinit", function() {
 
         $("button#logout-button").bind("click", function(){
             FB.logout(function(){
-                $.mobile.changePage("index.html", {
+//                $.mobile.changePage("index.html", {
+                $.mobile.changePage("#fblogin", {
+                    transition: 'pop', role: 'dialog'
                 });
             });
         });
