@@ -20,16 +20,16 @@
 
 <div id="fb-root"></div>
 
-<div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
+<div id="rightpanel" data-role="panel" data-display="overlay" data-position="right">
     <h3>History</h3>
     <ul id="checkin-list" data-role="listview">
     </ul>
 </div>
 
 <!--6.ヘッダーの設定-->
-<div data-role="header" data-position="fixed">
+<div data-role="header" data-position="fixed" data-backbtn=“true”>
     <h1>Checked-In Places</h1>
-    <a href="#leftpanel" data-role="button" data-inline="true">History</a>
+    <a href="#rightpanel" data-role="button" data-inline="true">History</a>
 </div>
 
 <!--7.ページ内容の設定-->
@@ -37,7 +37,8 @@
     <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
     <div data-role="fieldcontain" data-inline="true" class="ui-hide-label">
         <label for="sincedate">Since:</label>
-        <input id="sincedate" type="date" size="20" data-role="none" />-&nbsp;
+        <input id="sincedate" type="date" size="20" data-role="none" />
+        &nbsp;&nbsp;-&nbsp;&nbsp;
         <label for="untildate">Until:</label>
         <input id="untildate" type="date" size="20" data-role="none" />
         <button id="filter-button" type="button" data-mini="true"  data-inline="true">Filter</button>
