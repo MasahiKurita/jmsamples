@@ -174,8 +174,8 @@ $(document).bind("pageinit", function() {
                     }, {scope: "user_status,user_checkins,read_stream"});
                 } else {
                     alert("Logged out.");
-                    FB.login(function(response){
-                    }, {scope: "user_status,user_checkins,read_stream"});
+//                    FB.login(function(response){
+//                    }, {scope: "user_status,user_checkins,read_stream"});
                 }
             });
 
@@ -296,9 +296,9 @@ $(document).bind("pageinit", function() {
         $("button#logout-button").bind("click", function(){
             FB.logout(function(){
 //                $.mobile.changePage("index.html", {
-                $.mobile.changePage("#fblogin", {
-                    transition: 'pop', role: 'dialog'
-                });
+            });
+            $.mobile.changePage("#fblogin", {
+                transition: 'pop', role: 'dialog'
             });
         });
 
