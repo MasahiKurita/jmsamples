@@ -161,9 +161,11 @@ $(document).bind("pageinit", function() {
                         showCheckins(uid, since, until);
                         //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
                    } else if (response.status === 'not_authorized') {
+                       alert(response.status);
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins,read_stream"});
                     } else {
+                        alert(response.status);
                         FB.login(function(response){
                         }, {scope: "user_status,user_checkins,read_stream"});
                     }
@@ -319,45 +321,4 @@ $(document).bind("pageinit", function() {
 
     });
 
-
-    $("div#fblogin").bind("pageshow", function() {
-        window.fbAsyncInit = function() {
-            try {
-                FB.init({
-                    appId      : "698356506895047", // App ID
-                    status     : true, // check login status
-                    cookie     : true, // enable cookies to allow the server to access the session
-                    xfbml      : true  // parse XFBML
-                });
-
-              FB.Event.subscribe('auth.statusChange', function(response) {
-                    if (response.status === 'connected') {
-//                        $("div#foot_mark2").show();
-//                        $("button#logout-button").show();
-//                        console.log("userID: " + response.authResponse.userID);
-//                        FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
-//                        });
-//                        uid = response.authResponse.userID;
-//                        var since = $("input#sincedate").val();
-//                        var until = $("input#untildate").val();
-//                        showCheckins(uid, since, until);
-                        $.mobile.navigate("sample3.html", {
-                            allowSamePageTransition : true
-                        });
-                        //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
-                   } else if (response.status === 'not_authorized') {
-                        FB.login(function(response){
-                        }, {scope: "user_status,user_checkins,read_stream"});
-                    } else {
-                        FB.login(function(response){
-                        }, {scope: "user_status,user_checkins,read_stream"});
-                    }
-                });
-
-            } catch(e) {
-                console.log(e);
-            }
-
-        };
-    });
 });
