@@ -15,13 +15,18 @@
 
 <body>
 
+
+<div data-role="page" id="fblogin">
+    <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+</div>
+
 <!--5.ページの設定-->
 <div data-role="page" id="sample3">
 
 <div id="fb-root"></div>
 
 <div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
-    <div data-role="fieldcontain" data-inline="true" class="ui-hide-label">
+    <div data-role="fieldcontain">
         <label for="sincedate">Since:</label>
         <input id="sincedate" type="date" />
         <label for="untildate">Until:</label>
@@ -42,7 +47,7 @@
 
 <!--7.ページ内容の設定-->
 <div data-role="content" id="checkins">
-    <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+    <a href="#fblogin" data-rel="dialog" data-transition="pop">Log in</a>
     <div id="foot_mark2"></div>
 </div>
 
@@ -53,5 +58,6 @@
 </div>
 
 </div>
+
 </body>
 </html>
