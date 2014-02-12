@@ -20,9 +20,16 @@
 
 <div id="fb-root"></div>
 
+<div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
+    <h3>History</h3>>
+    <ul id="checkin-list" data-role="listview">
+    </ul>
+</div>
+
 <!--6.ヘッダーの設定-->
 <div data-role="header">
-    <h1>jQuery Mobileサンプルページ</h1>
+    <h1>Checked-In Places</h1>
+    <a href="#leftpanel" data-role="button" data-inline="true">History</a>
 </div>
 
 <!--7.ページ内容の設定-->
@@ -30,24 +37,20 @@
     <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
     <button id="logout-button" type="button">log-out</button>
 
-    <hr>
-    <p>Checked-In Places</p>
     <div id="foot_mark2"></div>
-
-    <ul id="checkin-list" data-role="listview">
-    </ul>
 
 </div>
 
 
 <!--8.フッターの設定-->
 <div data-role="footer" data-position="fixed">
-From - To:
-    <label for="sincedate">Since</label>
-    <input id="sincedate" type="date" />
-    <label for="untildate">Until</label>
-    <input id="untildate" type="date" />
-    <button id="filter-button" type="button">Filter</button>
+    <div data-role="fieldcontain">From - To:
+        <label for="sincedate">Since</label>
+        <input id="sincedate" type="date" data-mini="true" />
+        <label for="untildate">Until</label>
+        <input id="untildate" type="date" data-mini="true" />
+        <button id="filter-button" type="button">Filter</button>
+    </div>
 </div>
 
 </div>
