@@ -20,7 +20,7 @@
 
 <div id="fb-root"></div>
 
-<div id="rightpanel" data-role="panel" data-display="overlay" data-position="right">
+<div id="leftpanel" data-role="panel" data-display="overlay" data-position="left">
     <h3>History</h3>
     <ul id="checkin-list" data-role="listview">
     </ul>
@@ -28,9 +28,9 @@
 
 <!--6.ヘッダーの設定-->
 <div data-role="header" data-position="fixed">
-    <button id="logout-button" type="button">Log out</button>
+    <a href="#leftpanel" data-role="button" data-inline="true">History</a>
     <h1>Checked-In Places</h1>
-    <a href="#rightpanel" data-role="button" data-inline="true">History</a>
+    <button id="logout-button" type="button">Log out</button>
 </div>
 
 <!--7.ページ内容の設定-->
@@ -50,7 +50,8 @@
 
 
 <!--8.フッターの設定-->
-<div data-role="footer" data-position="fixed" data-backbtn="true">
+<div data-role="footer" data-position="fixed">
+    <a data-rel="back" data-role="button">Back</a>
 </div>
 
 </div>
