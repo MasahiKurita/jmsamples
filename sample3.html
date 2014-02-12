@@ -35,12 +35,12 @@
 <!--7.ページ内容の設定-->
 <div data-role="contennt" id="checkins">
     <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
-    <div data-role="fieldcontain">
-        <label for="sincedate">Since</label>
-        <input id="sincedate" type="date" size="20" data-role="none" />-
+    <div data-role="fieldcontain" data-inline="true">
+        <label for="sincedate">Since:</label>
+        <input id="sincedate" type="date" size="20" data-role="none" />-&nbsp;
     </div>
-    <div data-role="fieldcontain">
-        <label for="untildate">Until</label>
+    <div data-role="fieldcontain" data-inline="true">
+        <label for="untildate">Until:</label>
         <input id="untildate" type="date" size="20" data-role="none" />
     </div>
     <button id="filter-button" type="button" data-mini="true"  data-inline="true">Filter</button>
