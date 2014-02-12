@@ -155,6 +155,8 @@ $(document).bind("pageinit", function() {
                         alert("Logged in.");
                       } else {
                         alert("Not Logged in.");
+                        FB.login(function(response){
+                        }, {scope: "user_status,user_checkins,read_stream"});
                       }
                 })
             });
@@ -193,7 +195,6 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
-//                  var url = '/' + uid + '/checkins';
                   var url = '/' + uid + '/feed?limit=10000&fields=place,story,message';
                   if (since != "" && until != "") {
                       url = url + '&since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
