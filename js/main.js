@@ -341,7 +341,7 @@ $(document).bind("pageinit", function() {
 //                        var since = $("input#sincedate").val();
 //                        var until = $("input#untildate").val();
 //                        showCheckins(uid, since, until);
-                        $.mobile.changePage("sample3.html", {
+                        $.mobile.navigate("sample3.html", {
                             allowSamePageTransition : true
                         });
                         //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
