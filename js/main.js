@@ -297,9 +297,10 @@ $(document).bind("pageinit", function() {
             FB.logout(function(){
 //                $.mobile.changePage("index.html", {
             });
-            $.mobile.changePage("#fblogin", {
-                transition: 'pop', role: 'dialog'
-            });
+//            $.mobile.changePage("#fblogin", {
+//                transition: 'pop', role: 'dialog'
+//            });
+            $("div#sample3").pagecontainer("change", "#fblogin", { role: "dialog" } );
         });
 
         $("button#filter-button").bind("click", function() {
