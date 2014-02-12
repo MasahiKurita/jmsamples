@@ -139,55 +139,89 @@ $(document).bind("pageinit", function() {
     $("div#sample3").bind("pageshow", function() {
 
 
-        window.fbAsyncInit = function() {
-            try {
-                FB.init({
-                    appId      : "698356506895047", // App ID
-                    status     : true, // check login status
-                    cookie     : true, // enable cookies to allow the server to access the session
-                    xfbml      : true  // parse XFBML
-                });
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+          FB.init({
+              appId      : "698356506895047", // App ID
+              status     : true, // check login status
+              cookie     : true, // enable cookies to allow the server to access the session
+              xfbml      : true,  // parse XFBML
+              oauth      : true
+          });
+          FB.Event.subscribe('auth.statusChange', function(response) {
+              if (response.status === 'connected') {
+//                  $("div#foot_mark2").show();
+//                  $("button#logout-button").show();
+                  console.log("userID: " + response.authResponse.userID);
+                  FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
+                  });
+                  uid = response.authResponse.userID;
+                  var since = $("input#sincedate").val();
+                  var until = $("input#untildate").val();
+                  showCheckins(uid, since, until);
+                  //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
+             } else if (response.status === 'not_authorized') {
+                 alert(response.status);
+                  FB.login(function(response){
+                  }, {scope: "user_status,user_checkins,read_stream"});
+              } else {
+                  alert(response.status);
+                  FB.login(function(response){
+                  }, {scope: "user_status,user_checkins,read_stream"});
+              }
+          });
 
-              FB.Event.subscribe('auth.statusChange', function(response) {
-                    if (response.status === 'connected') {
-//                        $("div#foot_mark2").show();
-//                        $("button#logout-button").show();
-                        console.log("userID: " + response.authResponse.userID);
-                        FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
-                        });
-                        uid = response.authResponse.userID;
-                        var since = $("input#sincedate").val();
-                        var until = $("input#untildate").val();
-                        showCheckins(uid, since, until);
-                        //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
-                   } else if (response.status === 'not_authorized') {
-                       alert(response.status);
-                        FB.login(function(response){
-                        }, {scope: "user_status,user_checkins,read_stream"});
-                    } else {
-                        alert(response.status);
-                        FB.login(function(response){
-                        }, {scope: "user_status,user_checkins,read_stream"});
-                    }
-                });
+        });
 
-            } catch(e) {
-                console.log(e);
-            }
-
-        };
-
-        (function(d){
-            try {
-                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                if (d.getElementById(id)) {return;}
-                    js = d.createElement('script'); js.id = id; js.async = true;
-                    js.src = "//connect.facebook.net/en_US/all.js";
-                    ref.parentNode.insertBefore(js, ref);
-            } catch (e) {
-                console().log(e);
-            }
-        }(document));
+//        window.fbAsyncInit = function() {
+//            try {
+//                FB.init({
+//                    appId      : "698356506895047", // App ID
+//                    status     : true, // check login status
+//                    cookie     : true, // enable cookies to allow the server to access the session
+//                    xfbml      : true  // parse XFBML
+//                });
+//
+//              FB.Event.subscribe('auth.statusChange', function(response) {
+//                    if (response.status === 'connected') {
+////                        $("div#foot_mark2").show();
+////                        $("button#logout-button").show();
+//                        console.log("userID: " + response.authResponse.userID);
+//                        FB.api('/' + response.authResponse.userID + '/permissions', 'get', {"access_token": response.authResponse.accessToken}, function(response2) {
+//                        });
+//                        uid = response.authResponse.userID;
+//                        var since = $("input#sincedate").val();
+//                        var until = $("input#untildate").val();
+//                        showCheckins(uid, since, until);
+//                        //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
+//                   } else if (response.status === 'not_authorized') {
+//                       alert(response.status);
+//                        FB.login(function(response){
+//                        }, {scope: "user_status,user_checkins,read_stream"});
+//                    } else {
+//                        alert(response.status);
+//                        FB.login(function(response){
+//                        }, {scope: "user_status,user_checkins,read_stream"});
+//                    }
+//                });
+//
+//            } catch(e) {
+//                console.log(e);
+//            }
+//
+//        };
+//
+//        (function(d){
+//            try {
+//                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//                if (d.getElementById(id)) {return;}
+//                    js = d.createElement('script'); js.id = id; js.async = true;
+//                    js.src = "//connect.facebook.net/en_US/all.js";
+//                    ref.parentNode.insertBefore(js, ref);
+//            } catch (e) {
+//                console().log(e);
+//            }
+//        }(document));
 
         function attachInfoWindow(map, marker, infowindow) {
             google.maps.event.addListener(marker, 'click', function() {
