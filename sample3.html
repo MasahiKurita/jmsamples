@@ -45,9 +45,11 @@
 <!--8.フッターの設定-->
 <div data-role="footer" data-position="fixed">
 From - To:
-    <input id="sincedate" type="date" data-mini="true" />
-    <input id="untildate" type="date" data-mini="true" />
-    <button id="filter-button" type="button">Filter</button>
+    <div data-role="fieldcontain" data-mini="true">
+        <input id="sincedate" type="date" data-mini="true" />
+        <input id="untildate" type="date" data-mini="true" />
+        <button id="filter-button" type="button" data-mini="true">Filter</button>
+    </div>
 </div>
 
 </div>
