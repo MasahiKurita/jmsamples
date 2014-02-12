@@ -212,6 +212,7 @@ $(document).bind("pageinit", function() {
                   }
                   console.log("url: " + url);
                   FB.api(url, function(response) {
+                      console.log(response);
 
                       var latlngs = [];
                       var mapOptions = {
