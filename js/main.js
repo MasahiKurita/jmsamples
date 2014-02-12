@@ -162,10 +162,10 @@ $(document).bind("pageinit", function() {
                         //showCheckins(response.authResponse.userID, "2013/01/01", "2013/12/31");
                    } else if (response.status === 'not_authorized') {
                         FB.login(function(response){
-                        }, {scope: "user_status,user_checkins"});
+                        }, {scope: "user_status,user_checkins,read_stream"});
                     } else {
                         FB.login(function(response){
-                        }, {scope: "user_status,user_checkins"});
+                        }, {scope: "user_status,user_checkins,read_stream"});
                     }
                 });
 
@@ -201,7 +201,8 @@ $(document).bind("pageinit", function() {
               console.log('Welcome!  Fetching your information.... ');
               try {
 
-                  url = '/' + uid + '/checkins';
+//                  var url = '/' + uid + '/checkins';
+                  var url = '/' + uid + '/feed?fields=place,story,message';
                   if (since != "" && until != "") {
                       url = url + '?since=' + Math.round((new Date(since)).getTime() / 1000) + '&until=' + Math.round((new Date(until)).getTime() / 1000);
                   } else if (since != "") {
@@ -220,34 +221,60 @@ $(document).bind("pageinit", function() {
                       var map = new google.maps.Map(document.getElementById('foot_mark2'), mapOptions);
                       var bounds = new google.maps.LatLngBounds();
 
+                      var defaultuntil = new Date("1970/1/1");
+                      var defaultsince = new Date();
                       var checkinlist = $("ul#checkin-list");
-                      for(i=0; i<response.data.length; i++){
-                          var data = response.data[i];
-                          var place = data.place;
-                          var created_time = new Date(data.created_time);
-                          checkinlist.append("<li>" + created_time.toDateString() + " に、" + place.name + "にチェックインしました。</li>");
+                      for(i=0; i<response.data.length; i++) {
 
-                          var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
-                          bounds.extend(latlng);
-                          latlngs.push(latlng);
+                          if ('place' in response.data[i]) {
+                              var data = response.data[i];
 
-                          var marker = new google.maps.Marker({
-                              position: latlng,
-                              map: map,
-                              title:place.name
-                          });
+                              var place = data.place;
+                              var created_time = new Date(data.created_time);
+                              checkinlist.append("<li>Checked in " + place.name + " on " + created_time + ".</li>");
 
-                          var link = "http://www.facebook.com/" + data.id;
-                          var content = "Check-In: " + place.name + "<br />"
-                                      + "Date: " + created_time.toDateString() + "(" + created_time.toLocaleTimeString() + ")<br />"
-                                      + "Message: " + data.message + "<br />"
-                                      + "<a href=\"" + link + "\">" + link + "</a>";
-                          var infowindow = new google.maps.InfoWindow({
-                              content: content
-                          });
+                              var latlng = new google.maps.LatLng(place.location.latitude, place.location.longitude);
+                              bounds.extend(latlng);
+                              latlngs.push(latlng);
 
-                          attachInfoWindow(map, marker, infowindow);
+                              var marker = new google.maps.Marker({
+                                  position: latlng,
+                                  map: map,
+                                  title:place.name
+                              });
+
+                              var link = "http://www.facebook.com/" + data.id;
+                              var content = "Check-In: " + place.name + "<br />"
+                                          + "Date: " + created_time + ")<br />";
+                              if ("story" in data) {
+                                  content = content + "Comment: " + data.story + "<br />";
+                              } else if ("message" in data) {
+                                  content = content + "Comment: " + data.message + "<br />";
+                              }
+                              content = content + "<a href=\"" + link + "\">" + link + "</a>";
+                              var infowindow = new google.maps.InfoWindow({
+                                  content: content
+                              });
+
+                              attachInfoWindow(map, marker, infowindow);
+
+                              if (created_time.getTime() < defaultsince.getTime()) {
+                                  defaultsince = created_time;
+                              }
+                              if (created_time.getTime() > defaultuntil.getTime()) {
+                                  defaultuntil = created_time;
+                              }
+
+                          }
                       }
+
+                      if (since == "") {
+                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
+                      }
+                      if (until == "") {
+                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
+                      }
+
                       checkinlist.listview('refresh');
 
                       map.fitBounds(bounds);
@@ -265,14 +292,6 @@ $(document).bind("pageinit", function() {
                       });
                       footmark.setMap(map);
 
-                      if (since == "") {
-                          var defaultsince = new Date(response.data[response.data.length-1].created_time);
-                          $("input#sincedate").val(defaultsince.getFullYear() + "/" + (defaultsince.getMonth()+1) + "/" + defaultsince.getDate());
-                      }
-                      if (until == "") {
-                          var defaultuntil = new Date(response.data[0].created_time);
-                          $("input#untildate").val(defaultuntil.getFullYear() + "/" + (defaultuntil.getMonth()+1) + "/" + defaultuntil.getDate());
-                      }
                   });
 
               } catch (e) {
