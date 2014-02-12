@@ -149,6 +149,16 @@ $(document).bind("pageinit", function() {
                 oauth      : true
             });
 
+            FB.Event.subscribe('xfbml.render', function() {
+                FB.getLoginStatus(function(response) {
+                    if (response.session) {
+                        alert("Logged in.");
+                      } else {
+                        alert("Not Logged in.");
+                      }
+                })
+            });
+
             FB.Event.subscribe('auth.statusChange', function(response) {
                 if (response.status === 'connected') {
                     console.log("userID: " + response.authResponse.userID);
@@ -161,7 +171,7 @@ $(document).bind("pageinit", function() {
                     FB.login(function(response){
                     }, {scope: "user_status,user_checkins,read_stream"});
                 } else {
-                    alert(response.status);
+                    alert("Logged out.");
                     FB.login(function(response){
                     }, {scope: "user_status,user_checkins,read_stream"});
                 }
@@ -284,8 +294,7 @@ $(document).bind("pageinit", function() {
 
         $("button#logout-button").bind("click", function(){
             FB.logout(function(){
-                $.mobile.changePage("sample3.html", {
-                    allowSamePageTransition : true
+                $.mobile.changePage("index.html", {
                 });
             });
         });
